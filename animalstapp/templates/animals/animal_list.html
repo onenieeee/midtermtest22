@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="btn-group mb-3 text-center m-3" role="group">
+  <button type="button" style="background-color: #E6E6FA; padding: 15px; border: 1px solid; border-radius: 15px;" class="btn btn-secondary" onclick="toggleView('table')">Table View</button>
+  <button type="button" style="background-color: #E6E6FA; padding: 15px; border: 1px solid; border-radius: 15px;" class="btn btn-secondary" onclick="toggleView('card')">Card View</button>
+</div>
+  <table id="table-view" class="table table-striped rounded" style="background-color: #E6E6FA; display: block;">
+    <thead>
+      <tr>
+        <th>รหัสสัตว์</th>
+        <th>ชื่อ</th>
+        <th>พันธ์</th>
+        <th>รูปภาพ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for animal in animals %}
+        <tr>
+          <td>{{ animal.code }}</td>
+          <td>{{ animal.name }}</td>
+          <td>{{ animal.gene }}</td>
+          <td><img src="{{ animal.image.url }}" alt="{{ animal.name }}" width="100"></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <!-- Card View -->
+<div id="card-view" style="background-color: #E6E6FA; display: none; border-radius: 15px; width: 15%; margin: 0 auto;">
+  {% for animal in animals %}
+      <div class="card rounded mb-3 mx-auto" style="width: 25%; text-align: center">
+          <h3 class="card-header">{{ animal.name }}</h3>
+          <div class="card-body">
+              <p class="card-text">รหัสสัตว์: {{ animal.code }}</p>
+              <p class="card-text">พันธ์: {{ animal.gene }}</p>
+              <img src="{{ animal.image.url }}" alt="{{ animal.name }}" class="img-thumbnail" width="100">
+          </div>
+      </div>
+  {% endfor %}
+</div>
+
+
+  <script>
+    function toggleView(view) {
+      var tableView = document.getElementById('table-view');
+      var cardView = document.getElementById('card-view');
+
+      if (view === 'table') {
+        tableView.style.display = 'table';
+        cardView.style.display = 'none';
+      } else if (view === 'card') {
+        tableView.style.display = 'none';
+        cardView.style.display = 'block';
+      }
+    }
+  </script>
+{% endblock %}
