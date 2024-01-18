@@ -22,4 +22,20 @@ def add_animal(request):
     else:
         form = AnimalForm()
     return render(request, 'animals/save.html', {'form': form})
+# def search(request):
+#     if request.method == "POST":
+#         txt = request.POST['txtsearch']
+#         table = Animals.objects.filter(name__icontains=txt)
+#         context = {'pd': table}
+#     return render(request, 'result.html', context)
 
+def search_view(request):
+    query = request.GET.get('q')
+    if query:
+        # Perform the search using the query
+        animals = Animals.objects.filter(name__icontains=query)
+    else:
+        # If no query is provided, display all animals
+        animals = Animals.objects.all()
+
+    return render(request, 'animals/animal_list.html', {'animals': animals})

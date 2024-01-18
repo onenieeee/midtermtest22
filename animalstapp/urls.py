@@ -11,7 +11,8 @@ urlpatterns = [
     path('animals/', animal_list, name='animal_list'),
     path('animals/add/', add_animal, name='add_animal'),
     path('login/', CustomLoginView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),  # Add LogoutView URL pattern
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('search/', views.search_view, name='search'),
 ]
 from django.contrib.auth.views import LogoutView
 

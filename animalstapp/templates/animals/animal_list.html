@@ -5,6 +5,18 @@
   <button type="button" style="background-color: #E6E6FA; padding: 15px; border: 1px solid; border-radius: 15px;" class="btn btn-secondary" onclick="toggleView('table')">Table View</button>
   <button type="button" style="background-color: #E6E6FA; padding: 15px; border: 1px solid; border-radius: 15px;" class="btn btn-secondary" onclick="toggleView('card')">Card View</button>
 </div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- The form -->
+<br>
+<form class="example" method="get" action="{% url 'search' %}">
+  <input type="text" placeholder="Search.." name="q">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+<br>
+
+
   <table id="table-view" class="table table-striped rounded" style="background-color: #E6E6FA; display: block;">
     <thead>
       <tr>
