@@ -2,61 +2,70 @@
 <html>
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap')
-    .itim-regular {
-        font-family: "Itim", cursive;
-        font-weight: 400;
-        font-style: normal;
-      }
-      * {
-        font-family: "Itim", cursive;
-      }
-      
-    nav ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #663399; /* Purple color */
-    }
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    nav li {
-      float: left;
-    }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
-    nav li a {
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 14px 16px;
-      text-decoration: none;
-    }
+        .itim-regular {
+            font-family: "Itim", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
 
-    nav li a:hover {
-      background-color: #4B0082; /* Darker purple color on hover */
-    }
-  </style>
+        * {
+            font-family: "Itim", cursive;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #663399; /* Purple color */
+        }
+
+        nav li {
+            float: left;
+        }
+
+        nav li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav li a:hover {
+            background-color: #4B0082; 
+        }
+    </style>
+
 </head>
 <body>
+    {% load bootstrap5 %}
+
     {% csrf_token %}
     <nav>
         <ul>
             {% if user.is_authenticated %}
-          <li><a href="{% url 'animal_list' %}">รายการสัตว์</a></li>
-          <li><a href="{% url 'add_animal' %}">เพิ่มสัตว์</a></li>
-          <li><a href="{% url 'logout' %}">Logout</a></li>
-          {%endif%}
-          <li><a href="{% url 'login' %}">Login</a></li>
-          
+                <li><a href="{% url 'animal_list' %}">
+                    <i class="fas fa-paw"></i> 
+                    รายการสัตว์</a></li>
+                <li><a href="{% url 'add_animal' %}"> <i class="fas fa-plus"></i> เพิ่มสัตว์</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+            <li><a href="{% url 'login' %}"> Login</a></li>
         </ul>
-      </nav>
+    </nav>
 
-{% block content %}
-<h2>hello</h2>
-{% endblock %}
+    {% block content %}
+    <h2>hello</h2>
+    {% endblock %}
 
 </body>
 </html>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'animalstapp',
     'bootstrap5',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
