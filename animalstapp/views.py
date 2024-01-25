@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Animals
-from .forms import AnimalForm
+from .models import Movies
+from .forms import MoviesForm
 from django.contrib.auth.views import LoginView
 
 class CustomLoginView(LoginView):
@@ -10,17 +10,17 @@ def home(request):
     return render(request, 'base.html')
 
 def animal_list(request):
-    animals = Animals.objects.all()
-    return render(request, 'animals/animal_list.html', {'animals': animals})
+    animals = Movies.objects.all()
+    return render(request, 'movies/movies_list.html', {'movies': animals})
 
 def add_animal(request):
     if request.method == 'POST':
-        form = AnimalForm(request.POST, request.FILES)
+        form = MoviesForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('animal_list')
     else:
-        form = AnimalForm()
+        form = MoviesForm()
     return render(request, 'animals/save.html', {'form': form})
 # def search(request):
 #     if request.method == "POST":
@@ -33,9 +33,9 @@ def search_view(request):
     query = request.GET.get('q')
     if query:
         # Perform the search using the query
-        animals = Animals.objects.filter(name__icontains=query)
+        animals = Movies.objects.filter(name__icontains=query)
     else:
         # If no query is provided, display all animals
-        animals = Animals.objects.all()
+        animals = Movies.objects.all()
 
     return render(request, 'animals/animal_list.html', {'animals': animals})

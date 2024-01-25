@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'animalstapp',
+    'moviesapp',
     'bootstrap5',
     'fontawesomefree',
 ]
@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'animalst.urls'
+ROOT_URLCONF = 'movies.urls'
 
 TEMPLATES = [
     {
@@ -125,7 +125,7 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'login'
 LOGOUT_REDIRECT_URL = 'home'
 
-LOGIN_REDIRECT_URL = 'animal_list'
+LOGIN_REDIRECT_URL = 'movie_list'
 
 
 
